@@ -1,0 +1,12 @@
+name:Pixel 5a 5G
+brand:Google
+releaseDate:2021-08-17
+os:Android 11
+weight:183
+resolution:1080x2400
+dimensions:154.9x73.7x7.6
+chipset:Snapdragon 765G 5G
+storage:128
+RAM:6
+color:Black
+battery:4680

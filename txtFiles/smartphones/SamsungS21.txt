@@ -1,0 +1,12 @@
+name:Galaxy S21 5G
+brand:Samsung
+releaseDate:2021-01-14
+os:Android 11
+weight:169
+resolution:1080x2400
+dimensions:151.7x71.2x7.9
+chipset:Exynos 2100
+storage:256
+RAM:8
+color:Phantom White
+battery:4000

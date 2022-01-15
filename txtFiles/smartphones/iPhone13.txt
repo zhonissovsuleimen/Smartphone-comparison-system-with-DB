@@ -1,0 +1,12 @@
+name:iPhone 13
+brand:Apple
+releaseDate:2021-09-14
+os:iOS 15
+weight:174
+resolution:1170x2532
+dimensions:146.7x71.5x7.7
+chipset:Apple A15 Bionic
+storage:512
+RAM:4
+color:Blue
+battery:3240
