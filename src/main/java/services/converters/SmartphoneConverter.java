@@ -7,6 +7,7 @@ import entities.Brand;
 import entities.Chipset;
 import entities.OS;
 import entities.Smartphone;
+import services.ApplicationLogger;
 import services.IConverter;
 
 import java.io.File;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SmartphoneConverter implements IConverter {
     public List<Smartphone> ConvertAll(String folderDirectory){
@@ -30,8 +33,8 @@ public class SmartphoneConverter implements IConverter {
             try {
                 tmpSmartphone = Convert(path.toString());
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error happened while trying to convert file to Smartphone (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING, "Error happened while trying to convert file to Smartphone (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING,e.getMessage());
                 continue;
             }
 
@@ -71,7 +74,7 @@ public class SmartphoneConverter implements IConverter {
                             tmp = dao.getBrandList().stream().filter(a -> a.getName().replace(" ", "")
                                      .equals(content.replace(" ", ""))).findFirst().get();
                         }catch (Exception e) {
-                            e.printStackTrace();
+                            ApplicationLogger.log(Level.WARNING,e.getMessage());
                         }
                         brand = tmp;
                     }
@@ -83,7 +86,7 @@ public class SmartphoneConverter implements IConverter {
                             tmp =  dao.getOSList().stream().filter(a -> a.getName().concat(" " + a.getVersion()).replace(" ", "")
                                       .equals(content.replace(" ", ""))).findFirst().get();
                         }catch (Exception e) {
-                            e.printStackTrace();
+                            ApplicationLogger.log(Level.WARNING,e.getMessage());
                         }
                         os = tmp;
                     }
@@ -106,7 +109,7 @@ public class SmartphoneConverter implements IConverter {
                             tmp = dao.getChipsetList().stream().filter(c -> c.getName().replace(" ", "")
                                      .equals(content.replace(" ", ""))).findFirst().get();
                         }catch (Exception e) {
-                            e.printStackTrace();
+                            ApplicationLogger.log(Level.WARNING,e.getMessage());
                         }
                         chipset = tmp;
                     }
@@ -114,8 +117,8 @@ public class SmartphoneConverter implements IConverter {
                     case "battery" -> battery = Integer.parseInt(content);
                 }
             }catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Error happened while trying to parse line for Smartphone (" + line + ")");
+                ApplicationLogger.log(Level.WARNING, "Error happened while trying to parse line for Smartphone (" + line + ")");
+                ApplicationLogger.log(Level.WARNING,e.getMessage());
             }
         }
         scanner.close();

@@ -165,6 +165,13 @@ public class Smartphone {
         this.brand = brand;
     }
 
+    public OS getOS() {
+        return os;
+    }
+    public void setOS(OS os) {
+        this.os = os;
+    }
+
     public LocalDate getReleaseDate() {
         return releaseDate;
     }

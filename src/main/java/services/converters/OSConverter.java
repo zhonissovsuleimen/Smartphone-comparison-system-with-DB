@@ -1,6 +1,7 @@
 package services.converters;
 
 import entities.OS;
+import services.ApplicationLogger;
 import services.IConverter;
 
 import java.io.File;
@@ -8,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OSConverter implements IConverter {
     public List<OS> ConvertAll(String folderDirectory){
@@ -21,8 +24,8 @@ public class OSConverter implements IConverter {
             try {
                 tmpOS = Convert(path.toString());
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error happened while trying to convert file to OS (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING, "Error happened while trying to convert file to OS (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING,e.getMessage());
                 continue;
             }
 
