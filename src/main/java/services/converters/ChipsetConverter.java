@@ -1,6 +1,7 @@
 package services.converters;
 
 import entities.Chipset;
+import services.ApplicationLogger;
 import services.IConverter;
 
 import java.io.File;
@@ -8,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChipsetConverter implements IConverter {
     public List<Chipset> ConvertAll(String folderDirectory){
@@ -21,8 +24,8 @@ public class ChipsetConverter implements IConverter {
             try {
                 tmpChipset = Convert(path.toString());
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error happened while trying to convert file to Chipset (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING, "Error happened while trying to convert file to Chipset (" + path.toString() + ")");
+                ApplicationLogger.log(Level.WARNING,e.getMessage());
                 continue;
             }
 
